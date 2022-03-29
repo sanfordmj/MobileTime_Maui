@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.Maui.Controls.Compatibility"
+             xmlns:telerik="clr-namespace:Telerik.Maui.Controls;assembly=Telerik.Maui.Controls"     
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.Maui.Controls.Compatibility"
+             x:Class="MobileTime.View.ExpenseView">
+    <ContentView.Resources>        
+        <ResourceDictionary>
+            <ControlTemplate x:Key="displayTemplate">
+                <telerik:RadButton Text="{TemplateBinding DisplayString}" 
+            TextColor="White" 
+            BackgroundColor="#7BAEFF"
+            HeightRequest="40"
+            WidthRequest="180"
+            HorizontalOptions="Center"
+            VerticalContentAlignment="Center"
+            CornerRadius="20"  
+            Command="{TemplateBinding ToggleCommand}" />
+            </ControlTemplate>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        
+    </ContentView.Content>
+</ContentView>

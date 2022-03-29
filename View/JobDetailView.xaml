@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.Maui.Controls.Compatibility"
+             xmlns:telerik="clr-namespace:Telerik.Maui.Controls;assembly=Telerik.Maui.Controls"
+             x:Class="MobileTime.JobDetailView"
+             Title="JobDetailView"
+             BackgroundColor="White">
+    <ContentPage.Content>
+        <telerik:RadDockLayout x:Name="dockLayout" BackgroundColor="#512BD4">
+            <StackLayout telerik:RadDockLayout.Dock="Top" BackgroundColor="#512BD4" HorizontalOptions="FillAndExpand">
+                <StackLayout Orientation="Horizontal">
+                    <Button Text="Cancel" Clicked="OnCancelCommand" HorizontalOptions="StartAndExpand"></Button>
+                    <Button Text="Save" Clicked="OnSaveCommand"  HorizontalOptions="EndAndExpand"></Button>
+                </StackLayout>
+            </StackLayout>
+            <ScrollView>
+            <Grid telerik:RadDockLayout.Dock="Left" Padding="10" BackgroundColor="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="4*"/>
+                </Grid.RowDefinitions>
+                <StackLayout Grid.Row="0" Orientation="Vertical" BackgroundColor="Transparent" >
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                        <Label Text="Customer:" VerticalOptions="Start" HorizontalOptions="StartAndExpand" TextTransform="Uppercase" FontSize="Micro" TextDecorations="Underline" FontAttributes="Bold"/>
+                    </StackLayout>
+                        <Editor x:Name="CustomerName" Text="{Binding SelectedCustomer.Name , Mode=TwoWay}" BackgroundColor="#eff5ff" VerticalTextAlignment="End" IsReadOnly="True" FontSize="Medium" AutoSize="TextChanges" MinimumHeightRequest="50" VerticalOptions="Start" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                    <StackLayout Grid.Row="1" Orientation="Vertical" BackgroundColor="Transparent" >
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                            <Label Text="Job Desc:" VerticalOptions="Start" HorizontalOptions="StartAndExpand" TextTransform="Uppercase" FontSize="Micro" TextDecorations="Underline" FontAttributes="Bold"/>
+                        </StackLayout>
+                        <Editor x:Name="JobDescription" Text="{Binding JobDescription, Mode=TwoWay}" BackgroundColor="#eff5ff" FontSize="Medium" AutoSize="TextChanges" MinimumHeightRequest="100" VerticalOptions="Start" HorizontalOptions="FillAndExpand"/>
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+        </telerik:RadDockLayout>
+    </ContentPage.Content>
+</ContentPage>

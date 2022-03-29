@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.Maui.Controls.Compatibility"
+             x:Class="MobileTime.ViewHelper.Loading"
+             x:Name="LoadingDialog">
+    <ContentView.Content>
+        <Grid BackgroundColor="#9999" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1.4*"/>
+                </Grid.RowDefinitions>
+                <Label x:Name="lblProcessing" Grid.Row="0" Text="Processing Request!" IsVisible="True" HeightRequest="50" VerticalOptions="End" HorizontalOptions="Center" FontSize="Medium" />
+                <Label x:Name="lblServerError" Grid.Row="0" Text="Server Communication Error!" IsVisible="False" HeightRequest="50" VerticalOptions="End" HorizontalOptions="Center" FontSize="Medium" />
+                <telerikPrimitives:RadBusyIndicator Grid.Row="1" x:Name="BusyIndicatorDashboard" HeightRequest="85"
+                                       AnimationType="Animation8"
+                                       AnimationContentColor="#512BD4"
+                                       
+                                       AnimationContentHeightRequest="100"
+                                       AnimationContentWidthRequest="100"
+                                       IsBusy="True">
+                </telerikPrimitives:RadBusyIndicator>
+            </Grid>        
+    </ContentView.Content>
+</ContentView>

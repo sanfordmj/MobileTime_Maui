@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage BindingContext="." xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerik="clr-namespace:Telerik.Maui.Controls;assembly=Telerik.Maui.Controls"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.Maui.Controls.Compatibility"
+             xmlns:views="clr-namespace:MobileTime.View"
+             xmlns:viewss="clr-namespace:MobileTime.ViewHelper"
+             x:Class="MobileTime.View.MainPageView"
+             Title="MainPage" >
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <telerik:RadTabView x:Name="tabView" HeaderPosition="Bottom" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"  >
+                <telerik:TabViewItem HeaderText="Home" ImageSource="~/app/resources/mock/images/baseline_dashboard_black_24dp.png">
+                    <views:DashboardView/>
+                </telerik:TabViewItem>
+                <telerik:TabViewItem HeaderText="Jobs" ImageSource="~/app/resources/mock/images/baseline_assignment_black_24dp.png">
+                    <views:JobSearchView />
+                </telerik:TabViewItem>
+                <telerik:TabViewItem HeaderText="Asset" ImageSource="~/app/resources/mock/images/baseline_store_mall_directory_black_24dp.png">
+                    <views:AssetView />
+                </telerik:TabViewItem>
+                <telerik:TabViewItem HeaderText="Expense" ImageSource="~/app/resources/mock/images/baseline_add_a_photo_black_24dp">
+                    <views:ExpenseView/>
+                </telerik:TabViewItem>
+            </telerik:RadTabView>
+            <telerikPrimitives:RadBusyIndicator x:Name="BusyIndicatorAsset" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                       AnimationContentHeightRequest="100"
+                                       AnimationContentWidthRequest="100"                                       
+                                       AnimationType="Animation8" IsBusy="True" IsVisible="{Binding IsLoading}">
+            </telerikPrimitives:RadBusyIndicator>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

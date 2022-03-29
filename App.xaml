@@ -1,0 +1,36 @@
+﻿<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.Maui.Controls.Compatibility"
+             xmlns:windows="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.WindowsSpecific;assembly=Microsoft.Maui.Controls"
+             xmlns:local="clr-namespace:MobileTime"
+             x:Class="MobileTime.App"
+             windows:Application.ImageDirectory="Assets">
+    <Application.Resources>
+        <ResourceDictionary>            
+            <Color x:Key="PrimaryColor">#512bdf</Color>
+            <Color x:Key="SecondaryColor">White</Color>
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}" />
+                <Setter Property="FontFamily" Value="OpenSansRegular" />
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="{DynamicResource SecondaryColor}" />
+                <Setter Property="FontFamily" Value="OpenSansRegular" />
+                <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}" />
+                <Setter Property="Padding" Value="14,10" />
+            </Style>
+            <Style TargetType="Button" x:Key="StandardButtonStyle">
+                <Setter Property="BackgroundColor" Value="#C9DCE9"/>
+                <Setter Property="TextColor" Value="#000000"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="BorderWidth" Value="1"/>
+                <Setter Property="CornerRadius" Value="1"/>
+                <Setter Property="BorderColor" Value="Black"/>
+            </Style>
+            <telerikInput:BorderStyle x:Key="EntryBorderStyle"
+                        BorderThickness="2"
+                        BorderColor="LightBlue" />
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

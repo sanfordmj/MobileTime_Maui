@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerikDataControls="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.Maui.Controls.Compatibility"
+             xmlns:telerikListView="clr-namespace:Telerik.XamarinForms.DataControls.ListView;assembly=Telerik.Maui.Controls.Compatibility"
+             xmlns:telerikControls="clr-namespace:Telerik.Maui.Controls;assembly=Telerik.Maui.Controls"
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.Maui.Controls.Compatibility"
+             xmlns:telerikListViewCommands="clr-namespace:Telerik.XamarinForms.DataControls.ListView.Commands;assembly=Telerik.Maui.Controls.Compatibility"             
+             x:Class="MobileTime.View.JobSearchView"
+             >
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="HeaderTemplate">
+                <StackLayout Padding="20, 0, 0, 0" Margin="10"  Orientation="Horizontal" HeightRequest="80" HorizontalOptions="StartAndExpand">
+                    <telerikInput:RadEntry HorizontalOptions="FillAndExpand" VerticalTextAlignment="Start" VerticalOptions="Center" BackgroundColor="WhiteSmoke" TextColor="#512BD4"  FontSize="Large" WatermarkText="Enter Search" Text="{Binding InputSearchText}" TextChanged="RadEntry_TextChanged"  BorderStyle="{StaticResource EntryBorderStyle}"/>
+                </StackLayout>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <ContentView.Content>
+        <Grid>
+            <telerikControls:RadDockLayout x:Name="dockLayout" BackgroundColor="#512BD4">
+                <StackLayout telerikControls:RadDockLayout.Dock="Top" VerticalOptions="Fill" BackgroundColor="#512BD4" Orientation="Horizontal" HorizontalOptions="End">
+                    <Button Text="New" HorizontalOptions="Center"></Button>
+                </StackLayout>
+                <telerikDataControls:RadListView x:Name="listView" BackgroundColor="White" telerikControls:RadDockLayout.Dock="Left" Grid.Row="1" ItemsSource="{Binding SearchViewModel}" IsPullToRefreshEnabled="True"  IsLoadOnDemandEnabled="True" IsLoadOnDemandActive="{Binding IsLoadingMoreItems}" LoadOnDemandMode="Automatic" LoadOnDemand="listView_LoadOnDemand" SelectionChanged="listView_SelectionChanged"  RefreshRequested="listView_RefreshRequested" HeaderTemplate="{StaticResource HeaderTemplate}">
+                    <telerikDataControls:RadListView.ItemTemplate>
+                        <DataTemplate>
+                            <telerikListView:ListViewTemplateCell>
+                                <telerikListView:ListViewTemplateCell.View>
+                                    <Grid ColumnSpacing="10">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="50"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="80"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label Grid.Row="0" Padding="20,0,0,0" Grid.Column="0" VerticalTextAlignment="Center" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Text="{Binding Name}" />
+                                        <telerikControls:RadButton Grid.Row="0" Margin="0, 2, 10, 2" Grid.Column="1" VerticalOptions="Center" BackgroundColor="Transparent" 
+                                        FontSize="Micro"                                          
+                                        ImageSource="~/app/resources/mock/images/baseline_info_smoke_24dp.png"
+                                        CornerRadius="10" WidthRequest="80" Clicked="RadButton_Clicked">
+
+                                        </telerikControls:RadButton>
+                                    </Grid>
+                                </telerikListView:ListViewTemplateCell.View>
+                            </telerikListView:ListViewTemplateCell>
+                        </DataTemplate>
+                    </telerikDataControls:RadListView.ItemTemplate>
+                    <telerikDataControls:RadListView.ItemStyle>
+                        <telerikListView:ListViewItemStyle BackgroundColor="White"
+                                    TextCellTextColor="White"
+                                    BorderColor="#512BD4"                                                
+                                    BorderWidth="1"
+                                    BorderLocation="All" />
+                    </telerikDataControls:RadListView.ItemStyle>
+                    <telerikDataControls:RadListView.SelectedItemStyle>
+                        <telerikListView:ListViewItemStyle BackgroundColor="#83A9E2"
+                                    TextCellTextColor="#AAC7F6"
+                                    BorderColor="#512BD4"
+                                    BorderWidth="2"
+                                    BorderLocation="Bottom"/>
+                    </telerikDataControls:RadListView.SelectedItemStyle>
+                    <telerikDataControls:RadListView.PressedItemStyle>
+                        <telerikListView:ListViewItemStyle BackgroundColor="#C1C1C1"
+                                    TextCellTextColor="#AAC7F6"
+                                    BorderColor="#512BD4"
+                                    BorderWidth="2"
+                                    BorderLocation="Bottom"/>
+                    </telerikDataControls:RadListView.PressedItemStyle>
+                    <telerikDataControls:RadListView.ReorderItemStyle>
+                        <telerikListView:ListViewItemStyle BackgroundColor="#512BD4"
+                                    TextCellTextColor="#AAC7F6"
+                                    BorderColor="Black"
+                                    BorderWidth="2"
+                                    BorderLocation="All" />
+                    </telerikDataControls:RadListView.ReorderItemStyle>
+                </telerikDataControls:RadListView>
+                <StackLayout VerticalOptions="Fill" HeightRequest="160" IsVisible="{Binding Path=IsInfoVisible}" BackgroundColor="WhiteSmoke" Grid.Row="2">
+                    <Grid VerticalOptions="CenterAndExpand">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="30" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.3*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" TextTransform="Uppercase" VerticalTextAlignment="End" TextDecorations="Underline" Padding="4, 2, 0, 2" FontSize="Small" Text="Name:"/>
+                        <Label Grid.Row="1" Grid.Column="0" TextTransform="Uppercase" VerticalTextAlignment="End" TextDecorations="Underline" Padding="4, 2, 0, 2" FontSize="Small" Text="Address:"/>
+                        <Label Grid.Row="2" Grid.Column="0" TextTransform="Uppercase" VerticalTextAlignment="End" TextDecorations="Underline" Padding="4, 2, 0, 2" FontSize="Small" Text="Phone:"/>
+                        <Label Grid.Row="3" Grid.Column="0" TextTransform="Uppercase" VerticalTextAlignment="End" TextDecorations="Underline" Padding="4, 2, 0, 2" FontSize="Small" Text="Web Site:"/>
+
+                        <Label Grid.Row="0" Grid.Column="1" TextTransform="Uppercase" VerticalTextAlignment="End" Padding="0, 2, 0, 2" FontSize="Micro" Text="Process Displays and some realy long name"/>
+                        <Label Grid.Row="1" Grid.Column="1" TextTransform="Uppercase" VerticalTextAlignment="End" Padding="0, 2, 0, 2" FontSize="Micro" Text="1234 Pine Street, Forest Lake, MN, 55025"/>
+                        <Label Grid.Row="2" Grid.Column="1" TextTransform="Uppercase" VerticalTextAlignment="End" Padding="0, 2, 0, 2" FontSize="Micro" Text="1-800-554-3454, 123-123-1233"/>
+                        <Label Grid.Row="3" Grid.Column="1" TextTransform="Uppercase" VerticalTextAlignment="End" Padding="0, 2, 0, 2" FontSize="Micro" Text="www.somerealylongwebsite.com"/>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTapGestureRecognizerTapped" NumberOfTapsRequired="1" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnTapGestureRecognizerTapped" NumberOfTapsRequired="1" />
+                    </StackLayout.GestureRecognizers>
+                </StackLayout>
+            </telerikControls:RadDockLayout>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView x:Name="this"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.Maui.Controls.Compatibility"
+             xmlns:viewhelper="clr-namespace:MobileTime.ViewHelper;assembly=MobileTime"
+             xmlns:custom="clr-namespace:MobileTime.ViewHelper" 
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.Maui.Controls.Compatibility"
+             x:Class="MobileTime.ViewHelper.SearchView">    
+    <ContentView.Content>
+        <Grid BackgroundColor="{Binding Source={x:Reference this}, Path=BackgroundHex}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width=".2*"/>
+                <ColumnDefinition Width=".2*"/>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Row="0" Grid.Column="0" Text="{Binding Source={x:Reference this}, Path=LabelText}"/>
+            <telerikInput:RadEntry Grid.Row="1" Grid.Column="0" Text="{Binding Path=InputText}" IsReadOnly="True"/>
+            <ImageButton Grid.Row="1" Grid.Column="1" x:Name="add" Padding="0,0,0,0" BackgroundColor="Transparent"  IsVisible="{Binding Source={x:Reference this}, Path=IsAddButtonVisible}" BorderColor="#4488F6" Clicked="OnAddNewCommand" CommandParameter="{Binding Source={x:Reference this}, Mode=TwoWay, Path=ListDataSourceType}" Source="~/app/resources/mock/images/baseline_add_black_24dp.png"/>
+            <ImageButton Grid.Row="1" Grid.Column="2" x:Name="search" Padding="0,0,0,0" BackgroundColor="Transparent" BorderColor="#4488F6" Clicked="OnSearchClicked" CommandParameter="{Binding Source={x:Reference this}, Mode=TwoWay, Path=ListDataSourceType}" Source="~/app/resources/mock/images/ic_search_black_24dp.png"/>
+        </Grid>
+    </ContentView.Content>
+</ContentView>

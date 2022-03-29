@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerikPrimitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.Maui.Controls.Compatibility"
+             xmlns:telerik="clr-namespace:Telerik.Maui.Controls;assembly=Telerik.Maui.Controls"     
+             xmlns:telerikInput="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.Maui.Controls.Compatibility"
+             xmlns:viewhelper="clr-namespace:MobileTime.ViewHelper;assembly=MobileTime"
+             x:Class="MobileTime.View.JobView">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ControlTemplate x:Key="displayTemplate">
+                <telerik:RadButton Text="{TemplateBinding DisplayString}" 
+            TextColor="White" 
+            BackgroundColor="#7BAEFF"
+            HeightRequest="40"
+            WidthRequest="180"
+            HorizontalOptions="Center"
+            VerticalContentAlignment="Center"
+            CornerRadius="20"  
+            Command="{TemplateBinding ToggleCommand}" />
+            </ControlTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <telerik:RadDockLayout x:Name="dockLayout" BackgroundColor="#512BD4" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1">
+                <StackLayout telerik:RadDockLayout.Dock="Top" BackgroundColor="#512BD4" HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal">
+                        <Button Text="Cancel" Clicked="OnCancelCommand" HorizontalOptions="StartAndExpand"></Button>
+                        <Button Text="Save" Clicked="OnSaveCommand"  HorizontalOptions="EndAndExpand"></Button>
+                    </StackLayout>
+                </StackLayout>
+                <ScrollView VerticalOptions="Fill" MinimumHeightRequest="800">
+                    <Grid telerik:RadDockLayout.Dock="Left" Padding="10" BackgroundColor="White">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height=".6*"/>
+                            <RowDefinition Height=".6*"/>
+                            <RowDefinition Height=".6*"/>
+                            <RowDefinition Height=".6*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height=".8*"/>
+                        </Grid.RowDefinitions>
+                        <viewhelper:SearchView Grid.Row="0" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" IsEnabled="False" HeightRequest="200" LabelText="Select a customer:" InputText="{Binding SelectedCustomer.Name}" ListDataSourceType="Customer" IsAddButtonVisible="False"/>
+                        <viewhelper:SearchView Grid.Row="1" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand" IsEnabled="False" HeightRequest="200" LabelText="Select a job:"  InputText="{Binding SelectedProject.ShortDescription}"  ListDataSourceType="Job" IsAddButtonVisible="True"/>
+                        <StackLayout Grid.Row="2" Padding="10,0,0,0"  HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="Transparent">
+                            <telerik:RadBorder BorderColor="#0284ff" CornerRadius="10">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+                                    <Label  HorizontalOptions="Start" FontSize="Micro" TextTransform="Uppercase" VerticalTextAlignment="Center" Text="Remember Customer Location: "/>
+                                    <Switch HorizontalOptions="End" WidthRequest="45" Scale="1.1" IsToggled="{Binding UseCurrentPosition, Mode=TwoWay}"></Switch>
+                                    <telerik:RadButton BackgroundColor="LightGray" 
+                                        FontSize="Micro"                                          
+                                        ImageSource="~/app/resources/images/baseline_info_white_24dp.png"
+                                        Clicked="OpenPopup">
+                                        <telerikPrimitives:RadPopup.Popup>
+                                            <telerikPrimitives:RadPopup x:Name="popup" telerik:RadDockLayout.Dock="Left" IsModal="True" OutsideBackgroundColor="#6F000000">
+                                                <telerik:RadBorder CornerRadius="8"
+                                                BackgroundColor="WhiteSmoke">
+                                                    <Grid Padding="20"
+                                                    WidthRequest="350"
+                                                    HeightRequest="200">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="135" />
+                                                            <RowDefinition Height="40" />
+                                                        </Grid.RowDefinitions>
+                                                        <Label TextColor="Black" Text="This adds your current location to the Customer's record. This information is used for proximity suggestions E.g. &quot;Customer Searching when at Customer's location&quot;"/>
+                                                        <Button Grid.Row="1"
+                                                        Padding="2" WidthRequest="40"
+                                                        HorizontalOptions="End"
+                                                        Text="Ok"
+                                                        Clicked="ClosePopup"/>
+                                                    </Grid>
+                                                </telerik:RadBorder>
+                                            </telerikPrimitives:RadPopup>
+                                        </telerikPrimitives:RadPopup.Popup>
+                                    </telerik:RadButton>
+                                </StackLayout>
+                            </telerik:RadBorder>
+                        </StackLayout>
+                        <StackLayout Grid.Row="3" Orientation="Vertical" HorizontalOptions="Fill" BackgroundColor="WhiteSmoke" Padding="5,0,5,0">
+                            <Label Text="Start Time" HorizontalTextAlignment="Center" TextTransform="Uppercase" FontSize="Micro" TextDecorations="Underline" FontAttributes="Bold"/>
+                            <telerikInput:RadTimePicker x:Name="JobStartTime" SpinnerFormat="h:mm tt" VerticalOptions="FillAndExpand" DisplayStringFormat="h:mm tt" DisplayTemplate="{StaticResource displayTemplate}"   />
+                        </StackLayout>
+                        <StackLayout Grid.Row="4" Orientation="Vertical" HorizontalOptions="Fill"  BackgroundColor="WhiteSmoke" Padding="5,0,5,0">
+                            <Label Text="Lunch Time" HorizontalTextAlignment="Center" TextTransform="Uppercase" FontSize="Micro" TextDecorations="Underline" FontAttributes="Bold"/>
+                            <telerikInput:RadTimeSpanPicker x:Name="lunch" VerticalOptions="FillAndExpand"  MinuteStep="1" DefaultHighlightedTime="00:30:00" DisplayTemplate="{StaticResource displayTemplate}" />
+                        </StackLayout>
+                        <!-- SpinnerFormat="h:mm tt" DisplayStringFormat="h:mm tt" NOT WORKING-->
+
+                        <StackLayout Grid.Row="5" Orientation="Vertical" HorizontalOptions="Fill"  BackgroundColor="WhiteSmoke" Padding="5,0,5,0">
+                            <Label Text="End Time" HorizontalTextAlignment="Center" TextTransform="Uppercase" FontSize="Micro" TextDecorations="Underline" FontAttributes="Bold"/>
+                            <telerikInput:RadTimePicker x:Name="JobEndTime" SpinnerFormat="h:mm tt" VerticalOptions="FillAndExpand" DisplayStringFormat="h:mm tt"  DisplayTemplate="{StaticResource displayTemplate}"   />
+                        </StackLayout>
+                        <StackLayout Grid.Row="6" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" BackgroundColor="Transparent">
+                            <telerik:RadBorder BorderColor="#0284ff" CornerRadius="10">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+                                    <Label  HorizontalOptions="Start" FontSize="Micro" TextTransform="Uppercase" BackgroundColor="Transparent" VerticalTextAlignment="Center" Text="Expensed Meterials: "/>
+                                    <telerik:RadButton ImageSource="baseline_list_black_24dp.png" Clicked="OnMaterialList_Clicked" VerticalOptions="Center" BackgroundColor="Transparent"/>
+                                    <telerik:RadButton BackgroundColor="LightGray" VerticalOptions="Center"
+                            FontSize="Micro"                                          
+                            ImageSource="~/app/resources/images/baseline_info_white_24dp.png"
+                            Clicked="OpenListPopup">
+                                        <telerikPrimitives:RadPopup.Popup>
+                                            <telerikPrimitives:RadPopup x:Name="listpopup" telerik:RadDockLayout.Dock="Left" IsModal="True" OutsideBackgroundColor="#6F000000">
+                                                <telerik:RadBorder CornerRadius="8" BackgroundColor="WhiteSmoke">
+                                                    <Grid Padding="20" WidthRequest="350" HeightRequest="200">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="135" />
+                                                            <RowDefinition Height="40" />
+                                                        </Grid.RowDefinitions>
+                                                        <Label TextColor="Black" Text="This is a list of all materials currently on this job, this includes everything entered by other users"/>
+                                                        <Button Grid.Row="1"
+                                            Padding="2" WidthRequest="40"
+                                            HorizontalOptions="End"
+                                            Text="Ok"
+                                            Clicked="CloseListPopup"/>
+                                                    </Grid>
+                                                </telerik:RadBorder>
+                                            </telerikPrimitives:RadPopup>
+                                        </telerikPrimitives:RadPopup.Popup>
+                                    </telerik:RadButton>
+                                </StackLayout>
+                            </telerik:RadBorder>
+                        </StackLayout>
+                        <StackLayout Grid.Row="7" Orientation="Vertical" BackgroundColor="Transparent">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                                <Label Text="Enter materials used:" HorizontalOptions="StartAndExpand" VerticalOptions="End" TextTransform="Uppercase" FontSize="Micro" TextDecorations="Underline" FontAttributes="Bold"/>
+                            </StackLayout>
+                            <Editor x:Name="Materials" Text="{Binding Materials, Mode=TwoWay}" BackgroundColor="#eff5ff" FontSize="Medium" AutoSize="TextChanges" MinimumHeightRequest="100" VerticalOptions="Start"  HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+                        <StackLayout Grid.Row="8" Orientation="Vertical" BackgroundColor="Transparent" >
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Fill">
+                                <Label Text="Enter work performed:" VerticalOptions="Start" HorizontalOptions="StartAndExpand" TextTransform="Uppercase" FontSize="Micro" TextDecorations="Underline" FontAttributes="Bold"/>
+                            </StackLayout>
+                            <Editor x:Name="WorkDone" Text="{Binding JobWorkDone, Mode=TwoWay}" BackgroundColor="#eff5ff" FontSize="Medium" AutoSize="TextChanges" MinimumHeightRequest="100" VerticalOptions="Start" HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+
+                    </Grid>
+                </ScrollView>
+            </telerik:RadDockLayout>
+            <telerikPrimitives:RadBusyIndicator x:Name="BusyJobIndicatorAsset" AbsoluteLayout.LayoutFlags="All" AbsoluteLayout.LayoutBounds="0,0,1,1"
+                                       AnimationContentHeightRequest="100"
+                                       AnimationContentWidthRequest="100"                                       
+                                       AnimationType="Animation8" IsBusy="True" IsVisible="{Binding IsDetailLoading}">
+            </telerikPrimitives:RadBusyIndicator>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

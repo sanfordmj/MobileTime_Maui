@@ -1,0 +1,82 @@
+is_global = true
+build_property.TargetFramework = net6.0-windows10.0.19041
+build_property.TargetPlatformMinVersion = 10.0.17763.0
+build_property.UsingMicrosoftNETSdkWeb = 
+build_property.ProjectTypeGuids = 9A19103F-16F7-4668-BE54-9A1E7A4F7556
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = MobileTime
+build_property.ProjectDir = C:\Source\MobileTime_Maui\DEV\Michael\
+
+[C:/Source/MobileTime_Maui/DEV/Michael/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MobileTime.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[C:/Source/MobileTime_Maui/DEV/Michael/ViewHelper/Loading.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MobileTime.ViewHelper.Loading.xaml
+build_metadata.AdditionalFiles.TargetPath = ViewHelper\Loading.xaml
+build_metadata.AdditionalFiles.RelativePath = ViewHelper\Loading.xaml
+
+[C:/Source/MobileTime_Maui/DEV/Michael/ViewHelper/SearchList.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MobileTime.ViewHelper.SearchList.xaml
+build_metadata.AdditionalFiles.TargetPath = ViewHelper\SearchList.xaml
+build_metadata.AdditionalFiles.RelativePath = ViewHelper\SearchList.xaml
+
+[C:/Source/MobileTime_Maui/DEV/Michael/ViewHelper/SearchView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MobileTime.ViewHelper.SearchView.xaml
+build_metadata.AdditionalFiles.TargetPath = ViewHelper\SearchView.xaml
+build_metadata.AdditionalFiles.RelativePath = ViewHelper\SearchView.xaml
+
+[C:/Source/MobileTime_Maui/DEV/Michael/View/AssetView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MobileTime.View.AssetView.xaml
+build_metadata.AdditionalFiles.TargetPath = View\AssetView.xaml
+build_metadata.AdditionalFiles.RelativePath = View\AssetView.xaml
+
+[C:/Source/MobileTime_Maui/DEV/Michael/View/DashboardView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MobileTime.View.DashboardView.xaml
+build_metadata.AdditionalFiles.TargetPath = View\DashboardView.xaml
+build_metadata.AdditionalFiles.RelativePath = View\DashboardView.xaml
+
+[C:/Source/MobileTime_Maui/DEV/Michael/View/ExpenseView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MobileTime.View.ExpenseView.xaml
+build_metadata.AdditionalFiles.TargetPath = View\ExpenseView.xaml
+build_metadata.AdditionalFiles.RelativePath = View\ExpenseView.xaml
+
+[C:/Source/MobileTime_Maui/DEV/Michael/View/JobDetailView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MobileTime.View.JobDetailView.xaml
+build_metadata.AdditionalFiles.TargetPath = View\JobDetailView.xaml
+build_metadata.AdditionalFiles.RelativePath = View\JobDetailView.xaml
+
+[C:/Source/MobileTime_Maui/DEV/Michael/View/JobSearchView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MobileTime.View.JobSearchView.xaml
+build_metadata.AdditionalFiles.TargetPath = View\JobSearchView.xaml
+build_metadata.AdditionalFiles.RelativePath = View\JobSearchView.xaml
+
+[C:/Source/MobileTime_Maui/DEV/Michael/View/JobView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MobileTime.View.JobView.xaml
+build_metadata.AdditionalFiles.TargetPath = View\JobView.xaml
+build_metadata.AdditionalFiles.RelativePath = View\JobView.xaml
+
+[C:/Source/MobileTime_Maui/DEV/Michael/View/MainPageView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MobileTime.View.MainPageView.xaml
+build_metadata.AdditionalFiles.TargetPath = View\MainPageView.xaml
+build_metadata.AdditionalFiles.RelativePath = View\MainPageView.xaml
+
+[C:/Source/MobileTime_Maui/DEV/Michael/View/MaterialListView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MobileTime.View.MaterialListView.xaml
+build_metadata.AdditionalFiles.TargetPath = View\MaterialListView.xaml
+build_metadata.AdditionalFiles.RelativePath = View\MaterialListView.xaml

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:telerik="clr-namespace:Telerik.Maui.Controls;assembly=Telerik.Maui.Controls"
+             xmlns:viewhelper="clr-namespace:MobileTime.ViewHelper;assembly=MobileTime"
+             xmlns:telerikControls="clr-namespace:Telerik.Maui.Controls;assembly=Telerik.Maui.Controls"
+             x:Class="MobileTime.View.DashboardView">
+
+    <ContentView.Content>   
+        <Grid>            
+            <telerik:RadDockLayout x:Name="dockLayout" BackgroundColor="#512BD4">
+                <StackLayout telerik:RadDockLayout.Dock="Top" VerticalOptions="Fill" BackgroundColor="#512BD4" Orientation="Horizontal" HorizontalOptions="End">
+                    <Button Text="Logout" HorizontalOptions="Center"></Button>
+                </StackLayout>
+                <Grid Padding="5" telerik:RadDockLayout.Dock="Left" HorizontalOptions="StartAndExpand" WidthRequest="180" BackgroundColor="White">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height=".1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height=".1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height=".1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <telerikControls:RadButton  Grid.Row="0" Grid.Column="0"  
+                        FontSize="Micro"                                             
+                        IsEnabled="{Binding IsTimePunchEnabled}"
+                        BackgroundColor="{Binding CurrentStatusButtonColor}"                    
+                        ImageSource="~/app/resources/images/ic_timer_white_3x.png"
+                        CornerRadius="10"/>
+                    <Label Grid.Row="1" Grid.Column="0" />
+                    <telerikControls:RadButton Grid.Row="2" Grid.Column="0" 
+                        FontSize="Micro"                                             
+                        IsEnabled="{Binding IsJobPunchEnabled}" 
+                        BackgroundColor="{Binding JobStatusButtonColor}"                    
+                        ImageSource="~/app/resources/images/ic_cast_connected_white_3x.png"
+                        Clicked="OnJobCommand"
+                        CornerRadius="10"/>
+                    <Label Grid.Row="3" Grid.Column="0" />
+                    <telerikControls:RadButton Grid.Row="4" Grid.Column="0" 
+                        FontSize="Micro"                                             
+                        IsEnabled="{Binding IsJobPunchEnabled}" 
+                        BackgroundColor="{Binding JobStatusButtonColor}"                    
+                        ImageSource="~/app/resources/images/ic_assignment_white_3x.png"
+                        CornerRadius="10"/>
+                    <Label Grid.Row="5" Grid.Column="0" />
+                    <telerikControls:RadButton Grid.Row="6" Grid.Column="0" 
+                        FontSize="Micro"                                             
+                        IsEnabled="{Binding IsJobPunchEnabled}" 
+                        BackgroundColor="{Binding JobStatusButtonColor}"                    
+                        ImageSource="~/app/resources/images/baseline_airport_shuttle_white_48dp.png"
+                        CornerRadius="10"/>                    
+                </Grid>
+                <Grid Padding="5" telerik:RadDockLayout.Dock="Right" HorizontalOptions="Fill" BackgroundColor="WhiteSmoke">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height=".1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height=".1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height=".1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center" Text="You can customize the appearance of each TabViewHeaderItem by replacing new at aas asdas asdas asdas asdasdasd asdasdasd asdasdasd " />
+                    <Label Grid.Row="1" Grid.Column="0" />
+                    <Label Grid.Row="2" Grid.Column="0" VerticalTextAlignment="Center" Text="You can customize the appearance of each TabViewHeaderItem " />
+                    <Label Grid.Row="3" Grid.Column="0" />
+                    <Label Grid.Row="4" Grid.Column="0" VerticalTextAlignment="Center" Text="Edit job activity" />
+                    <Label Grid.Row="5" Grid.Column="0" />
+                    <Label Grid.Row="6" Grid.Column="0" VerticalTextAlignment="Center" Text="Mileage Log" />
+                </Grid>                
+            </telerik:RadDockLayout>
+            
+        </Grid>        
+    </ContentView.Content>
+</ContentView>
